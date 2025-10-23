@@ -1,0 +1,217 @@
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 16px !important;
+  /* Apply Open Sans font */
+  margin: 0%;
+}
+
+header,
+footer {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 16px !important;
+  /* Apply Open Sans font strictly */
+}
+
+header .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0413a;
+}
+
+header img {
+  height: 70px;
+  background-color: white;
+  /* Add white background */
+  padding: 2px;
+  /* Reduce padding to create a smaller box */
+  border-radius: 3px;
+  /* Adjust border radius for smaller rounded corners */
+  margin-right: 20px;
+  /* Add space between the logo and the brand name */
+}
+
+header h1 {
+  font-weight: 700;
+  /* Apply bold font weight to header title */
+  color: white;
+  margin: 0;
+}
+
+header .login {
+  margin-left: auto;
+}
+
+header .login a {
+  font-weight: 700;
+  /* Apply bold font weight to login link */
+  background-color: white;
+  color: #f0413a;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+header .login a:hover {
+  background-color: #241f47;
+  color: white;
+}
+
+header .navbar {
+  background-color: #241f47;
+  width: 100%;
+  padding: 0;
+}
+
+header .navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+header .navbar li {
+  margin: 13px 20px;
+}
+
+header .navbar a {
+  padding: 3px 3px;
+  text-decoration: none;
+  color: white;
+}
+
+header .navbar a:hover {
+  text-decoration: none;
+  color: #f0413a;
+}
+
+header .navbar a.active {
+  color: #f0413a;
+  /* Change text color of the active tab to match hover color */
+  background-color: #241f47;
+  /* Keep the background color the same */
+  border-radius: 5px;
+  /* Add rounded corners */
+  padding: 5px 10px;
+  /* Add padding for better appearance */
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+  header .navbar ul {
+      flex-direction: column;
+      align-items: center;
+      display: none;
+  }
+
+  header .navbar ul.active {
+      display: flex;
+  }
+
+  header .navbar li {
+      margin: 10px 0;
+  }
+
+  .hamburger {
+      display: flex;
+  }
+}
+
+footer {
+  background-color: #241f47;
+  /* Change footer background color to match navbar */
+  color: #ffffff;
+  /* Change footer text color to white */
+  text-align: left;
+  padding: 20px 0;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 16px !important;
+}
+
+footer .rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 11pt;
+  font-weight: 500;
+  padding: 0 20px;
+}
+
+footer .column {
+  flex: 1;
+  margin: 10px;
+}
+
+footer h3 {
+  font-weight: 700;
+  /* Apply bold font weight to footer headings */
+  color: #ffffff;
+  /* Change footer heading color to white */
+  margin-bottom: 10px;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 10pt;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+footer li {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  /* Align icon with text */
+}
+
+footer a {
+  font-weight: 400;
+  /* Apply regular font weight to footer links */
+  color: #ffffff;
+  /* Change footer link color to white */
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 10px;
+  /* Add space between icon and text */
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #f0413a;
+}
+
+footer p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 10pt;
+  color: #cccccc;
+  /* Change copyright line color to light gray */
+}
+
+@media (max-width: 768px) {
+  footer .rows {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  footer .column {
+      margin: 10px 0;
+  }
+}

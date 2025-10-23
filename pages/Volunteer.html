@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="shortcut icon" type="image/jpg" href="../images/icon.png" />
+        <title>LifeStream - Volunteer Registration</title>
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css"
+            rel="stylesheet">
+        <style>
+        body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .form-section {
+            width: 60%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .info-section {
+            width: 40%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .heading h2 {
+            height: 90px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background-color: #f0413a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            align-items: center;
+        }
+
+        button:hover {
+            background-color: #931541;;
+        }
+
+        .phone-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .phone-container select{
+            width:30%
+        }
+
+        .phone-container select
+        .phone-container input {
+            width: 48%;
+        }
+
+        .info-section h2 {
+            color: #333333;
+        }
+
+        .info-section p {
+            color: #333333;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-section ul {
+            margin-top: 10px;
+        }
+
+        .info-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .full-width-section {
+            width: 100%;
+            margin-top: 1%;
+            background: #333333;
+            padding: 50px;
+            padding-top: 0;
+            padding-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+            justify-content: center;
+        }
+
+        .image-gallery .image-container {
+            position: relative;
+            width: 30%;
+            height: 30%;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            border-color: #ccc;
+        }
+
+        .image-gallery .image-container h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .full-width-section h2 {
+            color: #ffffff;
+            margin-top: 25px;
+        }
+
+        .head h1 {
+            font-size: 2rem;
+        }
+
+        footer .column h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        footer .column ul li a {
+            color: #cccccc;
+        }
+
+        footer p {
+            color: #cccccc;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-danger {
+            background-color: #f0413a;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: black;
+        }
+
+        .btn-danger:hover {
+            background-color: #931541;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bbb;
+        }
+    </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="head">
+                <img src="../images/icon.png">
+                <h1>LifeStream</h1>
+                <div class="login">
+                    <a href="Sign-In.html" id="login">Sign In</a>
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="pt-2">
+                    <nav>
+                        <div class="hamburger" onclick="toggleMenu()">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <ul id="nav-menu">
+                            <li><a href="index.html" id="home">Home</a></li>
+                            <li><a href="Campaigns.html"
+                                    id="campaigns">Campaigns</a></li>
+                            <li><a href="Appointment.html" id="appointment">Make
+                                    Appointment</a></li>
+                            <li><a href="Organize-Camp.html"
+                                    id="organize">Organize a camp</a></li>
+                            <li><a href="Volunteer.html"
+                                    id="volunteer">Volunteer</a></li>
+                            <li><a href="BloodAvailability.html"
+                                    id="availability">Blood
+                                    Availability</a></li>
+                            <li><a href="DonationHistory.html"
+                                    id="history">Blood Donation History</a></li>
+                        <li><a href="FAQ.html" id="faq">FAQ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="full-width-section">
+                <section class="heading" style="color: white;">
+                    <h2>Volunteer Registration</h2>
+                </section>
+                <div class="image-gallery">
+                    <div class="image-container">
+                        <img src="../images/v1.jpeg" alt="Past Volunteer Event 1">
+                        <h2>Event 1</h2>
+                    </div>
+                    <div class="image-container">
+                        <img src="../images/v2.jpeg" alt="Past Volunteer Event 2">
+                        <h2>Event 2</h2>
+                    </div>
+                    <div class="image-container">
+                        <img src="../images/v3.webp" alt="Past Volunteer Event 3">
+                        <h2>Event 3</h2>
+                    </div>
+                </div>
+                <div>
+                    <h2>Join Us and Make a Difference!</h2>
+                </div>
+
+            </div>
+
+            <div class="container"
+                style="background-color:#f5f5f5; max-width: 100%;">
+                <div class="info-section">
+                    <h2>Camp Information</h2>
+                    <p>Join us in supporting our community! As a volunteer,
+                        you’ll
+                        help with different aspects of the camp, from organizing
+                        to
+                        providing essential support. Your involvement will make
+                        a
+                        significant difference.</p>
+                    <h3>Why Volunteer?</h3>
+                    <ul>
+                        <li>Make a positive impact in your community.</li>
+                        <li>Learn new skills and gain valuable experience.</li>
+                        <li>Meet like-minded individuals and build
+                            connections.</li>
+                    </ul>
+                    <h3>Volunteer Roles:</h3>
+                    <ul>
+                        <li><strong>Organizer:</strong> Manage the camp’s
+                            logistics
+                            and ensure everything runs smoothly.</li>
+                        <li><strong>Helper:</strong> Assist with daily tasks,
+                            setup,
+                            and support camp participants.</li>
+                        <li><strong>Medical Support:</strong> Provide first aid
+                            and
+                            help those in need of medical attention.</li>
+                        <li><strong>Logistics:</strong> Coordinate
+                            transportation,
+                            food, and essential supplies.</li>
+                    </ul>
+                </div>
+
+                <div class="form-section">
+                    <form id="volunteer-form">
+                        <!-- Volunteer Details -->
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name"
+                                placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email"
+                                placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Phone Number:</label>
+                            <div class="phone-container">
+                                <select id="country-code" name="country-code"
+                                    required>
+                                    <option value="+1">+1 (USA)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                    <option value="+92" selected>+92
+                                        (Pakistan)</option>
+                                    <option value="+91">+91 (India)</option>
+                                    <option value="+61">+61 (Australia)</option>
+                                </select>
+                                <input type="tel" id="contact" name="contact"
+                                    placeholder="Enter your phone number"
+                                    pattern="\d{10}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="availability">Availability Date:</label>
+                            <input type="date" id="availability"
+                                name="availability" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="roles">Volunteer Role:</label>
+                            <select id="roles" name="roles" required>
+                                <option value>-- Select Role --</option>
+                                <option value="organizer">Organizer</option>
+                                <option value="helper">Helper</option>
+                                <option value="medical">Medical Support</option>
+                                <option value="logistics">Logistics</option>
+                            </select>
+                        </div>
+
+                        <!-- Camp Details -->
+                        <div class="form-group">
+                            <label for="camp-name">Camp Name:</label>
+                            <input type="text" id="camp-name" name="camp-name"
+                                placeholder="Enter the name of the camp">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="camp-location">Camp Location:</label>
+                            <input type="text" id="camp-location"
+                                name="camp-location"
+                                placeholder="Enter the location of the camp">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="camp-notes">Additional Notes:</label>
+                            <textarea id="camp-notes" name="camp-notes" rows="4"
+                                placeholder="Any additional details or preferences"></textarea>
+                        </div>
+
+                        <button type="submit">Register as Volunteer</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <div id="popup" class="popup" onclick="closePopup()">
+            <div class="popup-content" onclick="event.stopPropagation()">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <h2>Thank you for registering!</h2>
+                <p>We appreciate your willingness to volunteer. We will get in
+                    touch with you soon.</p>
+            </div>
+        </div>
+        <footer>
+            <div class="rows">
+                <div class="column">
+                    <h3>NAVIGATION</h3>
+                    <ul>
+                        <li><a href="Blog.html">Blog</a></li>
+                        <li><a href="News.html">News</a></li>
+                        <li><a href="About-Us.html">About Us</a></li>
+                        <li><a href="Contact-Us.html">Contact Us</a></li>
+                        <li><a href="Feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Find Us</h3>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px"
+                                height="16px" viewBox="0 0 16 16"
+                                version="1.1">
+                                <g id="surface1">
+                                    <path
+                                        style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                        d="M 10.933594 6 L 9.332031 6 L 9.332031 4.667969 C 9.332031 3.980469 9.390625 3.546875 10.375 3.546875 L 10.953125 3.546875 C 11.320312 3.546875 11.621094 3.246094 11.621094 2.878906 L 11.621094 2.042969 C 11.621094 1.695312 11.351562 1.394531 11.003906 1.371094 C 10.601562 1.34375 10.199219 1.332031 9.796875 1.332031 C 7.988281 1.332031 6.667969 2.4375 6.667969 4.464844 L 6.667969 6 L 5.332031 6 C 4.964844 6 4.667969 6.296875 4.667969 6.667969 L 4.667969 8 C 4.667969 8.367188 4.964844 8.667969 5.332031 8.667969 L 6.667969 8.664062 L 6.667969 14 C 6.667969 14.367188 6.964844 14.667969 7.332031 14.667969 L 8.667969 14.667969 C 9.035156 14.667969 9.332031 14.367188 9.332031 14 L 9.332031 8.664062 L 10.78125 8.664062 C 11.121094 8.664062 11.40625 8.410156 11.445312 8.074219 L 11.597656 6.742188 C 11.644531 6.347656 11.335938 6 10.933594 6 Z M 10.933594 6 " />
+                                </g>
+                            </svg>
+                            <a href="https://www.facebook.com/"
+                                target="_blank">Facebook</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px"
+                                height="16px" viewBox="0 0 16 16"
+                                version="1.1">
+                                <g id="surface1">
+                                    <path
+                                        style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                        d="M 5.332031 2 C 3.496094 2 2 3.496094 2 5.332031 L 2 10.667969 C 2 12.503906 3.496094 14 5.332031 14 L 10.667969 14 C 12.503906 14 14 12.503906 14 10.667969 L 14 5.332031 C 14 3.496094 12.503906 2 10.667969 2 Z M 5.332031 3.332031 L 10.667969 3.332031 C 11.769531 3.332031 12.667969 4.230469 12.667969 5.332031 L 12.667969 10.667969 C 12.667969 11.769531 11.769531 12.667969 10.667969 12.667969 L 5.332031 12.667969 C 4.230469 12.667969 3.332031 11.769531 3.332031 10.667969 L 3.332031 5.332031 C 3.332031 4.230469 4.230469 3.332031 5.332031 3.332031 Z M 11.332031 4 C 10.964844 4 10.667969 4.296875 10.667969 4.667969 C 10.667969 5.035156 10.964844 5.332031 11.332031 5.332031 C 11.703125 5.332031 12 5.035156 12 4.667969 C 12 4.296875 11.703125 4 11.332031 4 Z M 8 4.667969 C 6.160156 4.667969 4.667969 6.160156 4.667969 8 C 4.667969 9.839844 6.160156 11.332031 8 11.332031 C 9.839844 11.332031 11.332031 9.839844 11.332031 8 C 11.332031 6.160156 9.839844 4.667969 8 4.667969 Z M 8 6 C 9.101562 6 10 6.898438 10 8 C 10 9.101562 9.101562 10 8 10 C 6.898438 10 6 9.101562 6 8 C 6 6.898438 6.898438 6 8 6 Z M 8 6 " />
+                                </g>
+                            </svg>
+                            <a href="https://www.instagram.com/"
+                                target="_blank">Instagram</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px"
+                                height="16px" viewBox="0 0 16 16"
+                                version="1.1">
+                                <g id="surface1">
+                                    <path
+                                        style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                        d="M 12.667969 2 L 3.332031 2 C 2.597656 2 2 2.597656 2 3.332031 L 2 12.667969 C 2 13.402344 2.597656 14 3.332031 14 L 12.667969 14 C 13.402344 14 14 13.402344 14 12.667969 L 14 3.332031 C 14 2.597656 13.402344 2 12.667969 2 Z M 6 11.332031 L 4.316406 11.332031 L 4.316406 6.667969 L 6 6.667969 Z M 5.128906 5.8125 C 4.617188 5.8125 4.273438 5.46875 4.273438 5.011719 C 4.273438 4.554688 4.613281 4.210938 5.1875 4.210938 C 5.699219 4.210938 6.042969 4.554688 6.042969 5.011719 C 6.042969 5.46875 5.699219 5.8125 5.128906 5.8125 Z M 12 11.332031 L 10.371094 11.332031 L 10.371094 8.78125 C 10.371094 8.078125 9.9375 7.914062 9.773438 7.914062 C 9.613281 7.914062 9.070312 8.023438 9.070312 8.78125 C 9.070312 8.890625 9.070312 11.332031 9.070312 11.332031 L 7.386719 11.332031 L 7.386719 6.667969 L 9.070312 6.667969 L 9.070312 7.316406 C 9.285156 6.9375 9.71875 6.667969 10.535156 6.667969 C 11.347656 6.667969 12 7.316406 12 8.78125 Z M 12 11.332031 " />
+                                </g>
+                            </svg>
+                            <a href="https://www.linkedin.com/"
+                                target="_blank">LinkedIn</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0,0,256,256" width="16px"
+                                height="16px">
+                                <g fill="#ffffff" fill-rule="nonzero"
+                                    stroke="none" stroke-width="1"
+                                    stroke-linecap="butt"
+                                    stroke-linejoin="miter"
+                                    stroke-miterlimit="10" stroke-dasharray
+                                    stroke-dashoffset="0"
+                                    font-family="none" font-weight="none"
+                                    font-size="none" text-anchor="none"
+                                    style="mix-blend-mode: normal">
+                                    <g transform="scale(10.66667,10.66667)">
+                                        <path
+                                            d="M20.576,19.721l-6.852,-9.488l4.552,-5.602c0.349,-0.429 0.283,-1.059 -0.146,-1.407c-0.427,-0.347 -1.058,-0.283 -1.406,0.146l-4.213,5.185l-3.454,-4.784c-0.35,-0.484 -0.911,-0.771 -1.508,-0.771h-3.471c-0.658,0 -1.039,0.746 -0.654,1.279l5.911,8.184l-5.611,6.906c-0.348,0.429 -0.283,1.059 0.146,1.407c0.185,0.151 0.408,0.224 0.63,0.224c0.291,0 0.579,-0.126 0.777,-0.369l5.271,-6.488l4.396,6.086c0.35,0.484 0.91,0.771 1.507,0.771h3.471c0.658,0 1.039,-0.746 0.654,-1.279z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <a href="https://x.com/?lang=en"
+                                target="_blank">Twitter</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px"
+                                height="16px" viewBox="0 0 16 16"
+                                version="1.1">
+                                <g id="surface1">
+                                    <path
+                                        style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                        d="M 8 2.667969 C 8 2.667969 3.832031 2.667969 2.789062 2.945312 C 2.214844 3.097656 1.765625 3.550781 1.613281 4.125 C 1.332031 5.164062 1.332031 8 1.332031 8 C 1.332031 8 1.332031 10.835938 1.613281 11.875 C 1.765625 12.449219 2.21875 12.902344 2.789062 13.054688 C 3.832031 13.332031 8 13.332031 8 13.332031 C 8 13.332031 12.167969 13.332031 13.210938 13.054688 C 13.78125 12.902344 14.234375 12.449219 14.386719 11.875 C 14.667969 10.835938 14.667969 8 14.667969 8 C 14.667969 8 14.667969 5.164062 14.386719 4.125 C 14.234375 3.550781 13.78125 3.097656 13.210938 2.945312 C 12.167969 2.667969 8 2.667969 8 2.667969 Z M 8 4 C 9.921875 4 12.328125 4.089844 12.863281 4.234375 C 12.976562 4.261719 13.070312 4.355469 13.101562 4.46875 C 13.261719 5.066406 13.332031 6.894531 13.332031 8 C 13.332031 9.105469 13.261719 10.933594 13.101562 11.53125 C 13.070312 11.644531 12.976562 11.734375 12.863281 11.765625 C 12.328125 11.910156 9.921875 12 8 12 C 6.078125 12 3.671875 11.910156 3.136719 11.765625 C 3.023438 11.738281 2.929688 11.644531 2.898438 11.53125 C 2.738281 10.933594 2.667969 9.105469 2.667969 8 C 2.667969 6.894531 2.738281 5.066406 2.898438 4.46875 C 2.929688 4.355469 3.023438 4.261719 3.136719 4.234375 C 3.671875 4.089844 6.078125 4 8 4 Z M 6.667969 5.691406 L 6.667969 10.308594 L 10.667969 8 Z M 6.667969 5.691406 " />
+                                </g>
+                            </svg>
+                            <a href="https://youtube.com"
+                                target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Contact us</h3>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                height="20px" viewBox="0 -960 960 960"
+                                width="20px"
+                                fill="#FFFFFF">
+                                <path
+                                    d="M264-48q-29.7 0-50.85-21.15Q192-90.3 192-120v-720q0-29.7 21.15-50.85Q234.3-912 264-912h432q29.7 0 50.85 21.15Q768-869.7 768-840v720q0 29.7-21.15 50.85Q725.7-48 696-48H264Zm0-120v48h432v-48H264Zm0-72h432v-480H264v480Zm0-552h432v-48H264v48Zm0 0v-48 48Zm0 624v48-48Z" />
+                            </svg>
+                            <a href="tel:+05890000111">0-589-0000111</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                height="20px" viewBox="0 -960 960 960"
+                                width="20px"
+                                fill="#FFFFFF">
+                                <path
+                                    d="M168-192q-29.7 0-50.85-21.16Q96-234.32 96-264.04v-432.24Q96-726 117.15-747T168-768h624q29.7 0 50.85 21.16Q864-725.68 864-695.96v432.24Q864-234 842.85-213T792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179Zm-312-94v-85 432-347Z" />
+                            </svg>
+                            <a
+                                href="mailto:lifestream@gmail.com">lifestream@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                height="20px" viewBox="0 -960 960 960"
+                                width="20px"
+                                fill="#e8eaed">
+                                <path
+                                    d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z" />
+                            </svg>
+                            <a href="https://maps.app.goo.gl/WGoZxNNCf7DPqdze9"
+                                target="_blank">1 - Khayaban-e-Jinnah Road,
+                                Johar Town, Lahore.</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p>Copyright &copy; 2024 LifeStream. All Rights Reserved.</p>
+        </footer>
+        <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', function () {
+                document.querySelector('.navbar a.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+
+        const currentUrl = window.location.href;
+        document.querySelectorAll('.navbar a').forEach(link => {
+            if (link.href === currentUrl) {
+                link.classList.add('active');
+            }
+        });
+
+        document.getElementById('volunteer-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            document.getElementById('popup').style.display = 'flex';
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Log Out Confirmation Modal
+        var modal = document.getElementById("logoutModal");
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function confirmLogout() {
+            // Add your logout logic here
+            alert("Logged out successfully!");
+            modal.style.display = "none";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+        <script src="../forms/volunteer-form.js"></script>
+
+    <!-- Log Out Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" onclick="confirmLogout()">Yes</button>
+                <button class="btn btn-secondary" onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    </body>
+
+</html>

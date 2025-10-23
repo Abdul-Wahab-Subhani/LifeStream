@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" type="image/jpg" href="../images/icon.png" />
+    <title>LifeStream - Appointment</title>
+    <script src="../javascript/form.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+    <style>
+        .appointment {
+            margin: 20px auto;
+            border-radius: 8px;
+
+        }
+
+        .appointment .heading {
+            background-color: #F0413A;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .appointment .appointment-data {
+
+            padding: 20px;
+        }
+
+        .appointment h2 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .bg-r {
+            background-color: #333333;
+        }
+
+        .appointment .row {
+            display: flex;
+        }
+
+        .appointment .container {
+            margin-bottom: 20px;
+        }
+
+        .appointment .form-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .appointment .col-7 {
+            flex: 0 0 calc(70% - 20px);
+            max-width: calc(70% - 20px);
+            margin-right: 20px;
+            text-align: justify;
+        }
+
+        .appointment .col-5 {
+            flex: 0 0 calc(30% - 20px);
+            max-width: calc(30% - 20px);
+        }
+
+        .appointment img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+
+        .appointment .appointment-Form {
+            margin-top: 1px;
+            width: 50%;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .appointment .appointment-Form fieldset {
+            border: 0;
+            background-color: #ffffff;
+            padding: 0;
+            padding-bottom: 20px;
+            margin: 0;
+            border-radius: 10px;
+            border: 0;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .appointment .appointment-Form .heading {
+            background-color: #F0413A;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .appointment .appointment-Form label {
+            display: inline-block;
+            width: 180px;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .appointment .appointment-Form input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+
+        }
+
+        .appointment .appointment-Form span {
+            margin-left: 5px;
+        }
+
+        .appointment .appointment-Form #date {
+            width: 200px;
+        }
+
+        .appointment .appointment-Form .message {
+            display: flex;
+            width: 100%;
+            padding-left: 60px;
+            padding-right: 60px;
+            justify-content: center;
+            margin-bottom: 10px;
+            align-items: end
+        }
+
+        .appointment .appointment-Form textarea {
+            padding: 13px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .appointment .appointment-Form .submit {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0px;
+        }
+
+        .appointment .appointment-Form button {
+            color: #fff;
+            background-color: #F0413A;
+            border: 0;
+            padding: .84rem 2.14rem;
+            font-size: .81rem;
+            display: block;
+            width: 70%;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        .appointment .appointment-Form button:hover {
+            background-color: #931541;
+        }
+
+        .container-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container-flex .content-60 {
+            width: 60%;
+        }
+
+        .container-flex .content-40 {
+            width: 40%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .learn-more-btn {
+            background-color: #F0413A;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #931541;
+        }
+
+        .content-40 p {
+            margin-top: 10px;
+        }
+
+        .head h1 {
+            font-size: 2rem;
+        }
+
+        footer .column h3 {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <img src="../images/icon.png">
+            <h1>LifeStream</h1>
+            <div class="login">
+                <a href="Sign-In.html" id="login">Sign In</a>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="pt-2">
+                <nav>
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <ul id="nav-menu">
+                        <li><a href="index.html" id="home">Home</a></li>
+                        <li><a href="Campaigns.html" id="campaigns">Campaigns</a></li>
+                        <li><a href="Appointment.html" id="appointment">Make Appointment</a></li>
+                        <li><a href="Organize-Camp.html" id="organize">Organize a camp</a></li>
+                        <li><a href="Volunteer.html" id="volunteer">Volunteer</a></li>
+                        <li><a href="BloodAvailability.html" id="availability">Blood Availability</a></li>
+                        <li><a href="DonationHistory.html" id="history">Blood Donation History</a></li>
+                        <li><a href="FAQ.html" id="faq">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container-fluid bg-r my-4">
+                <div class="d-flex justify-content-center">
+                    <h2 class="py-2 text-white" style="margin-top: 4px;margin-bottom: 4px;">Save Lives with Your Blood
+                        Donation</h2>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container my-4 appointment">
+                <div class="row">
+                    <div class="col-md-7 py-2">
+                        <h3><b>Why Donate Blood?</b></h3>
+                        <h5>Every donation can save up to three lives. Your
+                            generous act can make a significant difference
+                            to those in need. Join our community of heroes
+                            and make a difference today by giving the gift
+                            of life. Your donation matters more than you can
+                            imagine.</h5>
+                        <br>
+                        <h3><b>Benefits of Donating Blood</b></h3>
+                        <ul>
+                            <li>
+                                <h5>Blood is needed for surgeries, cancer
+                                    treatments, chronic illnesses, and
+                                    traumatic injuries.</h5>
+                            </li>
+                            <li>
+                                <h5>Donating blood can reduce harmful iron
+                                    stores and may reduce the risk of heart
+                                    disease.</h5>
+                            </li>
+                            <li>
+                                <h5>Your donation supports local hospitals
+                                    and patients in your
+                                    community.</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5 py-2">
+                        <img src="../images/9.jpg" class="img-d">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="container-flex">
+                    <div class="content-60">
+                        <h3 style="margin-bottom: 6px;"><b>Who Can
+                                Donate?</b></h3>
+                        <h5>Most people are eligible to donate blood if
+                            they:</h5>
+                        <ul>
+                            <li>
+                                <h5>Are in good health</h5>
+                            </li>
+                            <li>
+                                <h5>Are at least 16 years old (varies by
+                                    state)</h5>
+                            </li>
+                            <li>
+                                <h5>Weigh at least 50kg (varies by donation
+                                    type)</h5>
+                            </li>
+                            <li>
+                                <h5>Have not donated blood in the last 56
+                                    days</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-40">
+                        <a href="Donation-Eligibility-Checke.html">
+                            <button class="learn-more-btn">Check Eligibility</button>
+                        </a>
+                        <p>Use this tool to quickly determine if you are
+                            eligible to donate blood. Answer a few simple
+                            questions to find out.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="form-container appointment d-flex justify-content-center">
+                <form id="appointment-form" oninput="checks(); return false;" onsubmit="confirm(); return false;" class="appointment-Form">
+                    <fieldset>
+                        <div class="heading">
+                            <h3 style="margin-top: 4px; margin-bottom: 4px;">Request an Appointment</h3>
+                        </div>
+                        <br>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" required><span
+                            id="err6"></span>
+                        <br>
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><span
+                            id="err7"></span>
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" placeholder="Email" required><span id="err2"></span>
+                        <br>
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone" required><span id="err3"></span>
+                        <br>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" placeholder="City" required><span id="err4"></span>
+                        <br>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                        <br><br>
+                        <div class="message">
+                            <label for="details"><b>Message:</b></label>
+                            <textarea name="details" id="details" cols="19" rows="2"></textarea>
+                        </div>
+                        <br><br>
+                        <div class="submit">
+                            <button type="submit">Get Appointment</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="rows">
+            <div class="column">
+                <h3>NAVIGATION</h3>
+                <ul>
+                    <li><a href="Blog.html">Blog</a></li>
+                    <li><a href="News.html">News</a></li>
+                    <li><a href="About-Us.html">About Us</a></li>
+                    <li><a href="Contact-Us.html">Contact Us</a></li>
+                    <li><a href="Feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Find Us</h3>
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16"
+                            version="1.1">
+                            <g id="surface1">
+                                <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                    d="M 10.933594 6 L 9.332031 6 L 9.332031 4.667969 C 9.332031 3.980469 9.390625 3.546875 10.375 3.546875 L 10.953125 3.546875 C 11.320312 3.546875 11.621094 3.246094 11.621094 2.878906 L 11.621094 2.042969 C 11.621094 1.695312 11.351562 1.394531 11.003906 1.371094 C 10.601562 1.34375 10.199219 1.332031 9.796875 1.332031 C 7.988281 1.332031 6.667969 2.4375 6.667969 4.464844 L 6.667969 6 L 5.332031 6 C 4.964844 6 4.667969 6.296875 4.667969 6.667969 L 4.667969 8 C 4.667969 8.367188 4.964844 8.667969 5.332031 8.667969 L 6.667969 8.664062 L 6.667969 14 C 6.667969 14.367188 6.964844 14.667969 7.332031 14.667969 L 8.667969 14.667969 C 9.035156 14.667969 9.332031 14.367188 9.332031 14 L 9.332031 8.664062 L 10.78125 8.664062 C 11.121094 8.664062 11.40625 8.410156 11.445312 8.074219 L 11.597656 6.742188 C 11.644531 6.347656 11.335938 6 10.933594 6 Z M 10.933594 6 " />
+                            </g>
+                        </svg>
+                        <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16"
+                            version="1.1">
+                            <g id="surface1">
+                                <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                    d="M 5.332031 2 C 3.496094 2 2 3.496094 2 5.332031 L 2 10.667969 C 2 12.503906 3.496094 14 5.332031 14 L 10.667969 14 C 12.503906 14 14 12.503906 14 10.667969 L 14 5.332031 C 14 3.496094 12.503906 2 10.667969 2 Z M 5.332031 3.332031 L 10.667969 3.332031 C 11.769531 3.332031 12.667969 4.230469 12.667969 5.332031 L 12.667969 10.667969 C 12.667969 11.769531 11.769531 12.667969 10.667969 12.667969 L 5.332031 12.667969 C 4.230469 12.667969 3.332031 11.769531 3.332031 10.667969 L 3.332031 5.332031 C 3.332031 4.230469 4.230469 3.332031 5.332031 3.332031 Z M 11.332031 4 C 10.964844 4 10.667969 4.296875 10.667969 4.667969 C 10.667969 5.035156 10.964844 5.332031 11.332031 5.332031 C 11.703125 5.332031 12 5.035156 12 4.667969 C 12 4.296875 11.703125 4 11.332031 4 Z M 8 4.667969 C 6.160156 4.667969 4.667969 6.160156 4.667969 8 C 4.667969 9.839844 6.160156 11.332031 8 11.332031 C 9.839844 11.332031 11.332031 9.839844 11.332031 8 C 11.332031 6.160156 9.839844 4.667969 8 4.667969 Z M 8 6 C 9.101562 6 10 6.898438 10 8 C 10 9.101562 9.101562 10 8 10 C 6.898438 10 6 9.101562 6 8 C 6 6.898438 6.898438 6 8 6 Z M 8 6 " />
+                            </g>
+                        </svg>
+                        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16"
+                            version="1.1">
+                            <g id="surface1">
+                                <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                    d="M 12.667969 2 L 3.332031 2 C 2.597656 2 2 2.597656 2 3.332031 L 2 12.667969 C 2 13.402344 2.597656 14 3.332031 14 L 12.667969 14 C 13.402344 14 14 13.402344 14 12.667969 L 14 3.332031 C 14 2.597656 13.402344 2 12.667969 2 Z M 6 11.332031 L 4.316406 11.332031 L 4.316406 6.667969 L 6 6.667969 Z M 5.128906 5.8125 C 4.617188 5.8125 4.273438 5.46875 4.273438 5.011719 C 4.273438 4.554688 4.613281 4.210938 5.1875 4.210938 C 5.699219 4.210938 6.042969 4.554688 6.042969 5.011719 C 6.042969 5.46875 5.699219 5.8125 5.128906 5.8125 Z M 12 11.332031 L 10.371094 11.332031 L 10.371094 8.78125 C 10.371094 8.078125 9.9375 7.914062 9.773438 7.914062 C 9.613281 7.914062 9.070312 8.023438 9.070312 8.78125 C 9.070312 8.890625 9.070312 11.332031 9.070312 11.332031 L 7.386719 11.332031 L 7.386719 6.667969 L 9.070312 6.667969 L 9.070312 7.316406 C 9.285156 6.9375 9.71875 6.667969 10.535156 6.667969 C 11.347656 6.667969 12 7.316406 12 8.78125 Z M 12 11.332031 " />
+                            </g>
+                        </svg>
+                        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256" width="16px" height="16px">
+                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray stroke-dashoffset="0"
+                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                style="mix-blend-mode: normal">
+                                <g transform="scale(10.66667,10.66667)">
+                                    <path
+                                        d="M20.576,19.721l-6.852,-9.488l4.552,-5.602c0.349,-0.429 0.283,-1.059 -0.146,-1.407c-0.427,-0.347 -1.058,-0.283 -1.406,0.146l-4.213,5.185l-3.454,-4.784c-0.35,-0.484 -0.911,-0.771 -1.508,-0.771h-3.471c-0.658,0 -1.039,0.746 -0.654,1.279l5.911,8.184l-5.611,6.906c-0.348,0.429 -0.283,1.059 0.146,1.407c0.185,0.151 0.408,0.224 0.63,0.224c0.291,0 0.579,-0.126 0.777,-0.369l5.271,-6.488l4.396,6.086c0.35,0.484 0.91,0.771 1.507,0.771h3.471c0.658,0 1.039,-0.746 0.654,-1.279z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <a href="https://x.com/?lang=en" target="_blank">Twitter</a>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16"
+                            version="1.1">
+                            <g id="surface1">
+                                <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
+                                    d="M 8 2.667969 C 8 2.667969 3.832031 2.667969 2.789062 2.945312 C 2.214844 3.097656 1.765625 3.550781 1.613281 4.125 C 1.332031 5.164062 1.332031 8 1.332031 8 C 1.332031 8 1.332031 10.835938 1.613281 11.875 C 1.765625 12.449219 2.21875 12.902344 2.789062 13.054688 C 3.832031 13.332031 8 13.332031 8 13.332031 C 8 13.332031 12.167969 13.332031 13.210938 13.054688 C 13.78125 12.902344 14.234375 12.449219 14.386719 11.875 C 14.667969 10.835938 14.667969 8 14.667969 8 C 14.667969 8 14.667969 5.164062 14.386719 4.125 C 14.234375 3.550781 13.78125 3.097656 13.210938 2.945312 C 12.167969 2.667969 8 2.667969 8 2.667969 Z M 8 4 C 9.921875 4 12.328125 4.089844 12.863281 4.234375 C 12.976562 4.261719 13.070312 4.355469 13.101562 4.46875 C 13.261719 5.066406 13.332031 6.894531 13.332031 8 C 13.332031 9.105469 13.261719 10.933594 13.101562 11.53125 C 13.070312 11.644531 12.976562 11.734375 12.863281 11.765625 C 12.328125 11.910156 9.921875 12 8 12 C 6.078125 12 3.671875 11.910156 3.136719 11.765625 C 3.023438 11.738281 2.929688 11.644531 2.898438 11.53125 C 2.738281 10.933594 2.667969 9.105469 2.667969 8 C 2.667969 6.894531 2.738281 5.066406 2.898438 4.46875 C 2.929688 4.355469 3.023438 4.261719 3.136719 4.234375 C 3.671875 4.089844 6.078125 4 8 4 Z M 6.667969 5.691406 L 6.667969 10.308594 L 10.667969 8 Z M 6.667969 5.691406 " />
+                            </g>
+                        </svg>
+                        <a href="https://youtube.com" target="_blank">YouTube</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Contact us</h3>
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#FFFFFF">
+                            <path
+                                d="M264-48q-29.7 0-50.85-21.15Q192-90.3 192-120v-720q0-29.7 21.15-50.85Q234.3-912 264-912h432q29.7 0 50.85 21.15Q768-869.7 768-840v720q0 29.7-21.15 50.85Q725.7-48 696-48H264Zm0-120v48h432v-48H264Zm0-72h432v-480H264v480Zm0-552h432v-48H264v48Zm0 0v-48 48Zm0 624v48-48Z" />
+                        </svg>
+                        <a href="tel:+05890000111">0-589-0000111</a>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#FFFFFF">
+                            <path
+                                d="M168-192q-29.7 0-50.85-21.16Q96-234.32 96-264.04v-432.24Q96-726 117.15-747T168-768h624q29.7 0 50.85 21.16Q864-725.68 864-695.96v432.24Q864-234 842.85-213T792-192H168Zm312-240L168-611v347h624v-347L480-432Zm0-85 312-179H168l312 179Zm-312-94v-85 432-347Z" />
+                        </svg>
+                        <a href="mailto:lifestream@gmail.com">lifestream@gmail.com</a>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#e8eaed">
+                            <path
+                                d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z" />
+                        </svg>
+                        <a href="https://maps.app.goo.gl/WGoZxNNCf7DPqdze9" target="_blank">1 - Khayaban-e-Jinnah Road,
+                            Johar Town, Lahore.</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p>Copyright &copy; 2024 LifeStream. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', function () {
+                document.querySelector('.navbar a.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+
+        const currentUrl = window.location.href;
+        document.querySelectorAll('.navbar a').forEach(link => {
+            if (link.href === currentUrl) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+    <script src="../forms/appointment-form.js"></script>
+
+    <!-- Log Out Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" onclick="confirmLogout()">Yes</button>
+                <button class="btn btn-secondary" onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="../images/icon.png" />
+    <title>LifeStream - Donation Eligibility Checker</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333333;
+            text-align: center;
+            height: 100vh;
+        }
+
+        section {
+            background-color: #241f47;
+            color: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        section h1 {
+            margin: 0;
+            font-size: 28px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .go-back {
+            position: absolute;
+            left: 20px;
+            padding: 10px;
+            background-color: #f0413a;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .header1 h1 {
+            align-items: center;
+        }
+
+        .go-back:hover {
+            background-color: #931541;
+            color: #ffffff;
+        }
+
+        .appointment .appointment-Form {
+            margin-top: 1px;
+            width: 40%;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        .appointment .appointment-Form fieldset {
+            border: 0;
+            background-color: #ffffff;
+            /* White */
+            padding: 0;
+            padding-bottom: 20px;
+            margin: 0;
+            border-radius: 10px;
+            border: 0;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .appointment .appointment-Form .heading {
+            background-color: #f0413a;
+            /* Primary Red */
+            color: #ffffff;
+            /* White */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+            padding: 10px;
+        }
+
+        .appointment .appointment-Form label {
+
+            display: inline-block;
+            width: 240px;
+            margin-bottom: 8px;
+            margin-top: 8px;
+            text-align: left;
+        }
+
+        .appointment .appointment-Form input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 0;
+            border-bottom: 1px solid #cccccc;
+            /* Light Gray */
+        }
+
+        .appointment .appointment-Form span {
+            margin-left: 5px;
+        }
+
+        .appointment .appointment-Form #date {
+            width: 200px;
+        }
+
+        .appointment .appointment-Form .message {
+            display: flex;
+            width: 100%;
+            padding-left: 60px;
+            padding-right: 60px;
+            justify-content: center;
+            margin-bottom: 10px;
+            align-items: end;
+        }
+
+        .appointment .appointment-Form textarea {
+            padding: 13px;
+            border: 0;
+            border-bottom: 1px solid #cccccc;
+            /* Light Gray */
+        }
+
+        .appointment .appointment-Form .submit {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0px;
+        }
+
+        .appointment .appointment-Form button {
+            color: #ffffff;
+            /* White */
+            background-color: #f0413a;
+            /* Primary Red */
+            border: 0;
+            padding: .84rem 2.14rem;
+            font-size: .81rem;
+            display: block;
+            width: 70%;
+            border-radius: 40px;
+            cursor: pointer;
+
+        }
+
+        .appointment .appointment-Form button:hover {
+            background-color: #931541;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Log Out Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .modal-buttons .btn {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <section class="header1">
+            <a href="Appointment.html" class="go-back">Go Back</a>
+            <div>
+                <h2 style="align-items: center;text-align: center;">Donor
+                    Eligibility Checker</h2>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="appointment">
+            <div class="appointment-Form">
+                <fieldset>
+                    <div class="heading">
+                        <h2 style="margin-top: 5px;margin-bottom: 5px;">Check
+                            Your Eligibility</h2>
+                    </div>
+                    <form id="eligibilityForm">
+                        <div class="form-group">
+                            <label>Are you above 16 years old?</label>
+                            <input type="radio" name="age" value="yes" required>
+                            Yes
+                            <input type="radio" name="age" value="no"> No
+                        </div>
+
+                        <div class="form-group">
+                            <label>Do you weigh more than 50kg?</label>
+                            <input type="radio" name="weight" value="yes" required> Yes
+                            <input type="radio" name="weight" value="no"> No
+                        </div>
+
+                        <div class="form-group">
+                            <label>Have you had any serious illness in the
+                                past 6 months?</label>
+                            <input type="radio" name="illness" value="yes" required> Yes
+                            <input type="radio" name="illness" value="no">
+                            No
+                        </div>
+
+                        <div class="form-group">
+                            <label>Are you currently on any
+                                medications?</label>
+                            <input type="radio" name="medications" value="yes" required> Yes
+                            <input type="radio" name="medications" value="no"> No
+                        </div>
+
+                        <div class="submit">
+                            <button type="button" onclick="checkEligibility()">Check
+                                Eligibility</button>
+                        </div>
+                    </form>
+                    <div id="result"></div>
+                </fieldset>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p style="background-color: #343131; color: white; padding: 10px 0;">&copy;
+            2023 Donation Eligibility Checker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function checkEligibility() {
+            const form = document.getElementById('eligibilityForm');
+            const age = form.elements['age'].value;
+            const weight = form.elements['weight'].value;
+            const illness = form.elements['illness'].value;
+            const medications = form.elements['medications'].value;
+
+            let message = "";
+
+            if (age === "no" || weight === "no" || illness === "yes" || medications === "yes") {
+                message = "You are not eligible to donate blood.";
+            } else {
+                message = "You are eligible to donate blood!";
+            }
+
+            document.getElementById('result').textContent = message;
+        }
+
+        // Log Out Modal
+        var modal = document.getElementById("logoutModal");
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function confirmLogout() {
+            // Add your logout logic here
+            alert("Logged out successfully!");
+            modal.style.display = "none";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+
+    <!-- Log Out Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" onclick="confirmLogout()">Yes</button>
+                <button class="btn btn-secondary" onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

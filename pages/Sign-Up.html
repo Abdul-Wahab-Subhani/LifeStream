@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="shortcut icon" type="image/jpg" href="../images/icon.png" />
+        <title>Sign-Up</title>
+        <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90%;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        * {
+            font-family: sans-serif;
+            font: arial;
+        }
+
+        form {
+            width: 90%;
+            max-width: 60vh;
+            height: 80%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+
+        }
+
+        h2 {
+            display: inline;
+        }
+
+        label {
+            display: inline-block;
+            width: 180px;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #c31d36;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ef3d49;
+        }
+
+        p {
+            display: inline;
+        }
+
+        a {
+            color: #c31d36;
+        }
+
+        a:hover {
+            color: #ef3d49;
+        }
+
+        .inline-inputs {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .inline-inputs input {
+            width: 100%;
+            margin-bottom: -3px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-danger {
+            background-color: #c31d36;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #ef3d49;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: black;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bbb;
+        }
+    </style>
+    </head>
+
+    <body>
+        <form id="loginform">
+            <h2>Sign Up</h2><br><br>
+            <div class="inline-inputs">
+                <div style="width: 45%;">
+                    <label for="First-name">First Name:</label><br>
+                    <input type="text" id="First-name" name="First-name"
+                        placeholder="First Name" required>
+                </div>
+                <div style="width: 45%;">
+                    <label for="Last-name">Last Name:</label><br>
+                    <input type="text" id="Last-name" name="Last-name"
+                        placeholder="Last Name" required>
+                </div>
+            </div>
+            <br>
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" name="email" placeholder="Email"
+                required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"
+                placeholder="Password" required>
+            <br>
+            <label for="Confirm password">Confirm Password:</label>
+            <input type="password" id="Confirm password" name="Confirm password"
+                placeholder="Confirm" required>
+            <br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="03[0-9]{9}"
+                placeholder="Phone" required>
+            <br>
+            <label for="Blood-type">Blood Group:</label>
+            <select name="Blood-type" id="Blood-type" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <br><br><br>
+            <button type="submit">Sign Up</button>
+            <br><br>
+            <p>Already have an account?</p><br>
+            <a href="Sign-In.html">Sign In</a>
+        </form>
+        <div id="popup" class="popup" onclick="closePopup()">
+            <div class="popup-content" onclick="event.stopPropagation()">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <p id="popup-message"></p>
+            </div>
+        </div>
+
+        <!-- Log Out Confirmation Modal -->
+        <div id="logoutModal" class="modal">
+            <div class="modal-content">
+                <p>Are you sure you want to log out?</p>
+                <div class="modal-buttons">
+                    <button class="btn btn-danger" onclick="confirmLogout()">Yes</button>
+                    <button class="btn btn-secondary" onclick="closeModal()">No</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.getElementById('loginform').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('Confirm password').value;
+
+            if (password !== confirmPassword) {
+                document.getElementById('popup-message').innerText = 'Passwords do not match';
+                document.getElementById('popup').style.display = 'flex';
+                return;
+            }
+
+            const formData = {
+                firstName: document.getElementById('First-name').value,
+                lastName: document.getElementById('Last-name').value,
+                email: document.getElementById('email').value,
+                password: password,
+                phone: document.getElementById('phone').value,
+                bloodType: document.getElementById('Blood-type').value
+            };
+
+            fetch('http://localhost:3000/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text) });
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data);
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    if (error.message.includes('Email')) {
+                        document.getElementById('popup-message').innerText = 'Email already exists';
+                    } else if (error.message.includes('Phone')) {
+                        document.getElementById('popup-message').innerText = 'Phone number already exists';
+                    } else {
+                        document.getElementById('popup-message').innerText = error.message;
+                    }
+                    document.getElementById('popup').style.display = 'flex';
+                });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function confirmLogout() {
+            // Add your logout logic here
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+    </script>
+    <script src="../js/script.js"></script>
+    </body>
+
+</html>

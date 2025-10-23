@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="shortcut icon" type="image/jpg" href="../images/icon.png" />
+        <title>Sign-In</title>
+        <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        * {
+            font-family: sans-serif;
+            font: arial;
+        }
+
+        form {
+            width: 90%;
+            max-width: 50vh;
+            height: auto;
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+
+        }
+
+        h2 {
+            display: inline;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #c31d36;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ef3d49;
+        }
+
+        p {
+            display: inline;
+        }
+
+        a {
+            color: #c31d36;
+        }
+
+        a:hover {
+            color: #ef3d49;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-danger {
+            background-color: #c31d36;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #ef3d49;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: black;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bbb;
+        }
+    </style>
+    </head>
+
+    <body>
+        <form id="loginform">
+
+            <h2>Sign in</h2><br><br>
+            <label for="email">Email Address or Phone Number:</label>
+            <input type="text" id="emailOrPhone" name="emailOrPhone"
+                placeholder="Enter your email or phone number" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"
+                placeholder="Enter your password" required>
+            <p class="error-message" id="error-message">Incorrect password</p>
+            <br><br>
+            <button type="submit">Sign In</button>
+            <br><br>
+            <p>Don't have an account?</p><br>
+            <a href="Sign-Up.html">Create an account</a>
+        </form>
+        <script>
+        document.getElementById('loginform').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                emailOrPhone: document.getElementById('emailOrPhone').value,
+                password: document.getElementById('password').value
+            };
+
+            fetch('http://localhost:3000/api/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text) });
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(data);
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('error-message').innerText = error.message;
+                    document.getElementById('error-message').style.display = 'block';
+                });
+        });
+    </script>
+
+    <!-- Log Out Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to log out?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" onclick="confirmLogout()">Yes</button>
+                <button class="btn btn-secondary" onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    </body>
+
+</html>
