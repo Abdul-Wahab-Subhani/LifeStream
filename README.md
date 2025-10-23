@@ -1,6 +1,10 @@
 # LifeStream - Blood Donation Management System
 
-![LifeStream Logo](images/icon.png)
+<div align="center">
+  <img src="images/icon.png" alt="LifeStream Logo" width="100" height="100">
+  <h3>Connecting Hearts, Saving Lives</h3>
+  <p>A comprehensive web-based blood donation management platform designed to streamline the blood donation process and connect donors with those in need.</p>
+</div>
 
 LifeStream is a comprehensive blood donation management system that connects blood donors with those in need, facilitates blood donation campaigns, and streamlines the entire blood donation process.
 
